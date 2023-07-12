@@ -1,0 +1,6 @@
+[submodule "client"]
+	path = client
+	url = https://github.com/Khusnasin/client.git
+[submodule "submodules/client"]
+	path = submodules/client
+	url = https://github.com/Khusnasin/client.git
