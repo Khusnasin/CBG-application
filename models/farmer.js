@@ -8,7 +8,11 @@ const userSchema = mongoose.Schema({
     },
     location : {
         type : String , 
-        required : true,
+        required : true
+    },
+    age : {
+        type : Number,
+        required : true
     },
     phoneNumber : {
         type : String , 
