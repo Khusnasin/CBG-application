@@ -16,4 +16,15 @@ router.get('/getallfarmers', async(req, res) => {
 
 });
 
+router.post("/registerfarmer", async(req,res) => {
+    try{
+        const newfarmer = new Farmer(req.body)
+        await newfarmer.save()
+
+        res.send("Farmer Registered successfully");
+    } catch(error){
+        return res.status(400).json({error});
+    }
+});
+
 module.exports = router; 

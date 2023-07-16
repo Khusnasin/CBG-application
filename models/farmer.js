@@ -22,18 +22,22 @@ const userSchema = mongoose.Schema({
         type : Number,
         required : true
     },
-    dungProduced : {
+    dungProduced_inKg : {
         type : String,
         required : true
     },
     
-    amountOfMilk : {
+    amountOfMilk_inLitre : {
         type : String,
         required: true
     },
     imageUrls : [],
     description : {
         type: String , 
+        required : true
+    },
+    password : {
+        type : String,
         required : true
     }
 
