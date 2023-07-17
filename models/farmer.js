@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
 
-    name : {
+    Name : {
         type : String,
         required : true
     },
@@ -10,13 +10,14 @@ const userSchema = mongoose.Schema({
         type : String , 
         required : true
     },
-    age : {
-        type : Number,
-        required : true
-    },
+    
     phoneNumber : {
         type : String , 
-        required : true,
+        required : true
+    },
+    amountOfNapier : {
+        type : String,
+        required : true
     },
     numberOfCows : {
         type : Number,

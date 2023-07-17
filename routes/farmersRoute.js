@@ -17,10 +17,27 @@ router.get('/getallfarmers', async(req, res) => {
 });
 
 router.post("/registerfarmer", async(req,res) => {
+    const newfarmer = new Farmer({
+                Name : req.body.Name,
+                location: req.body.location,
+                phoneNumber: req.body.phoneNumber,
+                amountOfNapier: req.body.amountOfNapier,
+                
+                numberOfCows: req.body.numberOfCows,
+                dungProduced_inKg: req.body.dungProduced_inKg,
+                amountOfMilk_inLitre: req.body.amo,
+                imageurl1: req.body.imageurl1,
+                imageurl2: req.body.imageurl2,
+                imageurl3 : req.body.imageurl3,
+                description : req.body.description,
+                //email,
+                password: req.body.password,
+                
+    })
     try{
-        const newfarmer = new Farmer(req.body)
-        await newfarmer.save()
+        const farmer = await newfarmer.save();
 
+        
         res.send("Farmer Registered successfully");
     } catch(error){
         return res.status(400).json({error});
