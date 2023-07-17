@@ -25,7 +25,7 @@ router.post("/registerfarmer", async(req,res) => {
                 
                 numberOfCows: req.body.numberOfCows,
                 dungProduced_inKg: req.body.dungProduced_inKg,
-                amountOfMilk_inLitre: req.body.amo,
+                amountOfMilk_inLitre: req.body.amountOfMilk_inLitre,
                 imageurl1: req.body.imageurl1,
                 imageurl2: req.body.imageurl2,
                 imageurl3 : req.body.imageurl3,
