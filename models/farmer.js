@@ -15,7 +15,11 @@ const userSchema = mongoose.Schema({
         type : String , 
         required : true
     },
-    amountOfNapier : {
+    areaOfNapier : {
+        type : Number,
+        required : true
+    },
+    useOfNapier : {
         type : String,
         required : true
     },
@@ -36,6 +40,14 @@ const userSchema = mongoose.Schema({
     description : {
         type: String , 
         required : true
+    },
+    challenges : {
+        type : String,
+        required : true
+    },
+    interestInTraining : {
+        type : Boolean,
+        default : false
     },
     password : {
         type : String,

@@ -21,7 +21,8 @@ router.post("/registerfarmer", async(req,res) => {
                 Name : req.body.Name,
                 location: req.body.location,
                 phoneNumber: req.body.phoneNumber,
-                amountOfNapier: req.body.amountOfNapier,
+                areaOfNapier: req.body.areaOfNapier,
+                useOfNapier: req.body.useOfNapier,
                 
                 numberOfCows: req.body.numberOfCows,
                 dungProduced_inKg: req.body.dungProduced_inKg,
@@ -30,7 +31,8 @@ router.post("/registerfarmer", async(req,res) => {
                 imageurl2: req.body.imageurl2,
                 imageurl3 : req.body.imageurl3,
                 description : req.body.description,
-                //email,
+                challenges: req.body.challenges,
+                interestInTraining: req.body.interestInTraining,
                 password: req.body.password,
                 
     })
