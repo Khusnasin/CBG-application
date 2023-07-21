@@ -45,5 +45,28 @@ router.post("/registerfarmer", async(req,res) => {
         return res.status(400).json({error});
     }
 });
+router.post("/loginfarmer", async(req, res) =>{
+    const {Name , password}= req.body
+    try{
+        const farmer = await Farmer.findOne({Name : Name , password : password})
+        if(farmer) {
+
+            const temp = {
+                Name : farmer.Name,
+                location : farmer.location,
+                phoneNumber : farmer.phoneNumber,
+                _id : farmer._id,
+            }
+            res.send(temp);
+        }else{
+            return res.status(400).json({message : 'Login failed'});
+        }
+        
+        //return res.json({rooms});
+    }
+    catch(error){
+        return res.status(400).json({ error});
+    }
+});
 
 module.exports = router; 
