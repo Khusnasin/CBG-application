@@ -11,6 +11,7 @@ router.get('/getallfarmers', async(req, res) => {
         //return res.json({rooms});
     }
     catch(error){
+        console.error('Error fetching all farmers:', error);
         return res.status(400).json({message : error}); 
     }
 
