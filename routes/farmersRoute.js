@@ -8,7 +8,7 @@ router.get('/getallfarmers', async(req, res) => {
     try{
         const farmers = await Farmer.find({})
         res.send(farmers);
-        //return res.json({rooms});
+        
     }
     catch(error){
         return res.status(400).json({message : error}); 
@@ -62,10 +62,21 @@ router.post("/loginfarmer", async(req, res) =>{
             return res.status(400).json({message : 'Login failed'});
         }
         
-        //return res.json({rooms});
+        
     }
     catch(error){
         return res.status(400).json({ error});
+    }
+});
+
+router.post("/addfarmers", async(req,res) => {
+    try{
+        const newfarmer = new Farmer(req.body)
+        await newfarmer.save()
+
+        res.send("New Farmer Added Successfully!");
+    } catch(error){
+        return res.status(400).json({error});
     }
 });
 
