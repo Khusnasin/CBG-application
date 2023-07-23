@@ -1,16 +1,13 @@
 const express = require("express");
-
-
 const app = express();
-
-
+const bodyParser = require('body-parser');
 const dbConfig = require('./db')
 const farmersRoute = require('./routes/farmersRoute')
 const usersRoute = require('./routes/usersRoute')
 
 app.use(express.json());
 
-
+app.use(bodyParser.json());
 app.use('/api/farmers' , farmersRoute)
 app.use('/api/users' , usersRoute)
 
