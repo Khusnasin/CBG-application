@@ -36,7 +36,9 @@ const userSchema = mongoose.Schema({
         type : String,
         required: true
     },
+    
     imageUrls : [],
+
     description : {
         type: String , 
         required : true
