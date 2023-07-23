@@ -3,19 +3,7 @@ const router = express.Router();
 
 const Farmer = require('../models/farmer');
 
-router.get('/getallfarmers', async(req, res) => {
 
-    try{
-        const farmers = await Farmer.find({})
-        res.send(farmers);
-        
-    }
-    catch(error){
-        console.error('Error fetching all farmers:', error);
-        return res.status(400).json({message : error}); 
-    }
-
-});
 
 router.post("/registerfarmer", async(req,res) => {
     const newfarmer = new Farmer({
@@ -23,8 +11,7 @@ router.post("/registerfarmer", async(req,res) => {
                 location: req.body.location,
                 phoneNumber: req.body.phoneNumber,
                 areaOfNapier: req.body.areaOfNapier,
-                useOfNapier: req.body.useOfNapier,
-                
+                useOfNapier: req.body.useOfNapier,                
                 numberOfCows: req.body.numberOfCows,
                 dungProduced_inKg: req.body.dungProduced_inKg,
                 amountOfMilk_inLitre: req.body.amountOfMilk_inLitre,
@@ -38,9 +25,7 @@ router.post("/registerfarmer", async(req,res) => {
                 
     })
     try{
-        const farmer = await newfarmer.save();
-
-        
+        const farmer = await newfarmer.save();       
         res.send("Farmer Registered successfully");
     } catch(error){
         return res.status(400).json({error});
@@ -79,6 +64,17 @@ router.post("/addfarmers", async(req,res) => {
     } catch(error){
         return res.status(400).json({error});
     }
+});
+router.get('/getallfarmers', async(req, res) => {
+
+    try{
+        const farmers = await Farmer.find({})
+        res.send(farmers);   
+    }
+    catch(error){
+        return res.status(400).json({message : error}); 
+    }
+
 });
 
 module.exports = router; 

@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 
 var mongoURL = 'mongodb+srv://bluecorecbgplant:wHlcuIsJUk58IUEF%402019@cluster0.p1z9ijo.mongodb.net/Bluecore'
 
-mongoose.connect(mongoURL , {useUnifiedTopology: true , useNewUrlParser : true})
+mongoose.connect(mongoURL , {
+    useUnifiedTopology: true ,
+     useNewUrlParser : true,
+     useCreateIndex: true
+    })
 
 var connection = mongoose.connection
 
