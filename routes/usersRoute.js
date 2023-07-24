@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-
+const adminController = require("../controllers/adminController");
 const User = require("../models/user");
 
-router.post("/registeruser" , async(req, res) => {
+router.post("/registeruseradmin" , async(req, res) => {
     const newuser =new User({
         name : req.body.name ,
         email : req.body.email ,
@@ -12,14 +12,14 @@ router.post("/registeruser" , async(req, res) => {
 
     try{
         const user = await newuser.save();
-        res.send('User Registered Successfully!')
+        res.send('Admin Registered Successfully!')
     } catch (error) {
         return res.status(400).json({ error });
     }
 
 });
 
-router.post("/loginuser", async(req, res) =>{
+router.post("/loginadmin", async(req, res) =>{
     const {email , password}= req.body
     try{
         const user = await User.findOne({email : email , password : password})
@@ -53,5 +53,6 @@ router.get("/getallusers", async(req,res) => {
         return res.status(400).json({error});
     }
 });
+router.post('/registeruseradmin', adminController.registerAdmin);
 
 module.exports = router;
