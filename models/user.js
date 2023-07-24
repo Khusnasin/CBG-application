@@ -28,7 +28,3 @@ const userModel = mongoose.model('users' , userSchema)
 
 module.exports = userModel;
 
-module.exports = {
-    secretAdminCode: 'your-secret-admin-code', 
-  };
-  

@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require("./db");
+const config = require("../config");
 const AdminModel = require("../models/user");
 
 // Controller function for admin registration
@@ -8,7 +8,7 @@ const registerAdmin = async (req, res) => {
   const { name, email, password, adminCode } = req.body;
 
   // Validate the admin code 
-  if (adminCode !== 'your-secret-admin-code') {
+  if (adminCode !== config.secretAdminCode) {
     return res.status(401).json({ message: 'Invalid admin code' });
   }
 

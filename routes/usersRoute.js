@@ -3,22 +3,7 @@ const router = express.Router();
 const adminController = require("../controllers/adminController");
 const User = require("../models/user");
 
-router.post("/registeruseradmin" , async(req, res) => {
-    const newuser =new User({
-        name : req.body.name ,
-        email : req.body.email ,
-        password : req.body.password
-    });
-
-    try{
-        const user = await newuser.save();
-        res.send('Admin Registered Successfully!')
-    } catch (error) {
-        return res.status(400).json({ error });
-    }
-
-});
-
+router.post('/registeruseradmin', adminController.registerAdmin);
 router.post("/loginadmin", async(req, res) =>{
     const {email , password}= req.body
     try{
@@ -53,6 +38,6 @@ router.get("/getallusers", async(req,res) => {
         return res.status(400).json({error});
     }
 });
-router.post('/registeruseradmin', adminController.registerAdmin);
+
 
 module.exports = router;
