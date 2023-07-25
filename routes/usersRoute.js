@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/user");
 
 
-router.post("/loginadmin", async(req, res) =>{
+router.post("/login", async(req, res) =>{
     const {email , password}= req.body
     try{
         const user = await User.findOne({email : email , password : password})
