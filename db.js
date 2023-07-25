@@ -4,8 +4,7 @@ var mongoURL = 'mongodb+srv://bluecorecbgplant:wHlcuIsJUk58IUEF%402019@cluster0.
 
 mongoose.connect(mongoURL , {
     useUnifiedTopology: true ,
-     useNewUrlParser : true,
-     useCreateIndex: true
+    useNewUrlParser: true,
     })
 
 var connection = mongoose.connection
@@ -20,4 +19,4 @@ connection.on('connected' , ()=>{
 
 
 
-module.exports = mongoose
+module.exports = mongoose;
