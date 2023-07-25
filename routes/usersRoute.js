@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const adminController = require("../controllers/adminController");
 const User = require("../models/user");
 
-router.post('/registeruseradmin', adminController.registerAdmin);
+
 router.post("/loginadmin", async(req, res) =>{
     const {email , password}= req.body
     try{
