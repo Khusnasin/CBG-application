@@ -7,7 +7,7 @@ const AdminModel = require("../models/admin");
 
 // Controller function for admin registration
 const registerAdmin = async (req, res) => {
-  const { name, email, password, adminCode } = req.body;
+  const { username, email, password, adminCode } = req.body;
 
   // Validate the admin code 
   if (adminCode !== config.secretAdminCode) {
@@ -26,7 +26,7 @@ const registerAdmin = async (req, res) => {
 
     // Create a new admin object
     const newAdmin = new AdminModel({
-      name,
+      username,
       email,
       password: hashedPassword,
     });
