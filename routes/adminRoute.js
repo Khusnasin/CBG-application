@@ -81,6 +81,6 @@ const loginAdmin = async (req, res) => {
     }
   };
   router.post("/loginadmin", loginAdmin ); 
-  module.exports = { registerAdmin, loginAdmin}
+  module.exports = { registerAdmin, loginAdmin};
   module.exports= router;   
 
