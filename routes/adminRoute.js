@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require("../config");
 const AdminModel = require("../models/admin");
+const authenticateUser = require('../middleware/authmiddleware');
 
 // Controller function for admin registration
 const registerAdmin = async (req, res) => {
@@ -81,6 +82,16 @@ const loginAdmin = async (req, res) => {
     }
   };
   router.post("/loginadmin", loginAdmin ); 
+
+  router.get('/admin', authenticateUser, (req, res) => {
+    if (req.user.isAdmin) {
+      res.status(200).json({ message: 'This is an admin-only route.' });
+    } else {
+      res.status(403).json({ message: 'You are not authorized to access this route.' });
+    }
+  });
+
+
   module.exports = { registerAdmin, loginAdmin};
   module.exports= router;   
 
