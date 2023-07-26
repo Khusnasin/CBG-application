@@ -21,7 +21,7 @@ const userSchema = mongoose.Schema({
     },
     useOfNapier : {
         type : String,
-        required : true
+        required : false
     },
     numberOfCows : {
         type : Number,
@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema({
 
     description : {
         type: String , 
-        required : true
+        required : false
     },
     challenges : {
         type : String,
@@ -53,7 +53,7 @@ const userSchema = mongoose.Schema({
     },
     password : {
         type : String,
-        required : true
+        required : false
     }
 
 } , {
