@@ -21,6 +21,7 @@
     "jsonwebtoken": "^9.0.1",
     "leaflet": "^1.9.4",
     "moment": "^2.29.4",
+    "mongodb": "^5.7.0",
     "mongoose": "^7.4.0",
     "nodemon": "^3.0.1",
     "os-browserify": "^0.3.0",
