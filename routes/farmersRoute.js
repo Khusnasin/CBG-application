@@ -98,82 +98,21 @@ router.get('/getfarmerbyid', async (req, res) => {
 });
 
 router.put('/updatefarmer/:farmerid', async (req, res) => {
-    const farmerid = req.params.farmerid;
-    const updateData = req.body;
+    const farmerId = req.params.farmerid;
+    const updatedFarmerData = req.body; 
   
     try {
-      const farmer = await Farmer.findByIdAndUpdate(farmerid, updateData, { new: true });
+     
+      const updatedFarmer = await Farmer.findByIdAndUpdate(farmerId, updatedFarmerData, { new: true });
   
-      if (farmer) {
-        res.send(farmer);
-      } else {
-        res.status(404).json({ message: 'Farmer not found' });
-      }
+      
+      res.json(updatedFarmer);
     } catch (error) {
       console.log('Error updating farmer:', error);
-      return res.status(400).json({ message: error });
+      return res.status(400).json({ message: 'Failed to update farmer' });
     }
   });
-  
 
-router.post("/farmer-details", async (req, res) => {
-
-    const { 
-        farmer,
-        userid,
-        location,
-        phoneNumber,
-        areaOfNapier,
-        useOfNapier,
-        numberOfCows,
-        dungProduced_inKg,
-        amountOfMilk_inLitre,
-        imageUrls,
-        description,
-        challenges,
-        interestInTraining,
-    } = req.body;
-    //const userid = req.body.userid;
-
-    //console.log(token);
-
-    try {
-        const newfarmerdetails = new Farmerdetail({
-            farmer:farmer.Name,
-            userid,
-            location,
-            phoneNumber,
-            areaOfNapier,
-            useOfNapier,
-            numberOfCows,
-            dungProduced_inKg,
-            amountOfMilk_inLitre,
-            imageUrls,
-            description,
-            challenges,
-            interestInTraining
-        })
-
-        const updates = await newfarmerdetails.save();
-        const farmertemp = await Farmer.findOne({ _id: farmer._id })
-        //console.log(roomtemp);
-
-        farmertemp.currentDetails.push({
-            updateid : updates._id,
-            userid: userid
-        });
-
-        await farmertemp.save();
-
-
-        res.send('Payment Successful! Your room in successfully booked');
-    } catch (error) {
-        console.log('Khushnasin')
-        return res.status(400).json({ error });
-        //console.log(error);
-    }
-
-});
 
 
 module.exports = router;  
