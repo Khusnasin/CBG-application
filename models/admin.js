@@ -17,6 +17,10 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  adminCode: {
+    type: String,
+    required: true,
+  }
 });
 
 const Admin = mongoose.model('Admin', adminSchema);
