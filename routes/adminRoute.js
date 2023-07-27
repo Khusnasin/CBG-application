@@ -30,6 +30,7 @@ const registerAdmin = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      adminCode,
     });
 
     // Save the new admin to the database
@@ -81,17 +82,18 @@ const loginAdmin = async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   };
-  router.post("/loginadmin", loginAdmin ); 
+  
 
-  router.get('/admin', authenticateUser, (req, res) => {
-    if (req.user.isAdmin) {
-      res.status(200).json({ message: 'This is an admin-only route.' });
-    } else {
-      res.status(403).json({ message: 'You are not authorized to access this route.' });
-    }
-  });
+  router.post('/registeruseradmin', registerAdmin);
+  router.post('/loginadmin', loginAdmin);
 
-
-  module.exports = { registerAdmin, loginAdmin};
+  router.get('/admin-screen', authenticateUser, (req, res) => {
+  if (req.user.isAdmin) {
+    res.status(200).json({ message: 'This is an admin-only route.' });
+  } else {
+    res.status(403).json({ message: 'You are not authorized to access this route.' });
+  }
+});
+  
   module.exports= router;   
 

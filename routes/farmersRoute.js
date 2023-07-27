@@ -47,24 +47,59 @@ router.post("/loginfarmer", async (req, res) => {
         } else {
             return res.status(400).json({ message: 'Login failed' });
         }
-
-
     }
     catch (error) {
         return res.status(400).json({ error });
     }
 });
 
+
 router.post("/addfarmers", async (req, res) => {
     try {
-        const newfarmer = new Farmer(req.body)
-        await newfarmer.save()
-
-        res.send("New Farmer Added Successfully!");
+      const {
+        Name,
+        location,
+        phoneNumber,
+        areaOfNapier,
+        useOfNapier,
+        numberOfCows,
+        dungProduced_inKg,
+        amountOfMilk_inLitre,
+        imageurl1,
+        imageurl2,
+        imageurl3,
+        description,
+        challenges,
+        interestInTraining,
+        password,
+      } = req.body;
+  
+      const newfarmer = new Farmer({
+        Name,
+        location,
+        phoneNumber,
+        areaOfNapier: areaOfNapier || null,
+        useOfNapier: useOfNapier || null,
+        numberOfCows: numberOfCows || null,
+        dungProduced_inKg: dungProduced_inKg || null,
+        amountOfMilk_inLitre: amountOfMilk_inLitre || null,
+        imageurl1,
+        imageurl2,
+        imageurl3,
+        description,
+        challenges,
+        interestInTraining,
+        password,
+      });
+  
+      await newfarmer.save();
+  
+      res.send("New Farmer Added Successfully!");
     } catch (error) {
-        return res.status(400).json({ error });
+      return res.status(400).json({ error });
     }
-});
+  });
+
 router.get('/getallfarmers', async (req, res) => {
 
     try {
