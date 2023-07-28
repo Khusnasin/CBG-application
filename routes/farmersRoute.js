@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const Farmer = require('../models/farmer');
-
-
-
 router.post("/registerfarmer", async (req, res) => {
     const newfarmer = new Farmer({
         Name: req.body.Name,
@@ -78,11 +75,11 @@ router.post("/addfarmers", async (req, res) => {
         Name,
         location,
         phoneNumber,
-        areaOfNapier: areaOfNapier || null,
-        useOfNapier: useOfNapier || null,
-        numberOfCows: numberOfCows || null,
-        dungProduced_inKg: dungProduced_inKg || null,
-        amountOfMilk_inLitre: amountOfMilk_inLitre || null,
+        areaOfNapier,
+        useOfNapier,
+        numberOfCows,
+        dungProduced_inKg,
+        amountOfMilk_inLitre,
         imageurl1,
         imageurl2,
         imageurl3,
@@ -94,11 +91,14 @@ router.post("/addfarmers", async (req, res) => {
   
       await newfarmer.save();
   
-      res.send("New Farmer Added Successfully!");
+      res.status(200).json({message:"New Farmer Added Successfully!"});
     } catch (error) {
-      return res.status(400).json({ error });
-    }
-  });
+        console.error('Error adding farmer:', error);
+        res.status(500).json({ error: 'Failed to add farmer. Please try again later.' });
+
+   
+  }
+});
 
 router.get('/getallfarmers', async (req, res) => {
 
