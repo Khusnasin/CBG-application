@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@restart/hooks": "0.4.11",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "browserify-zlib": "^0.2.0",
@@ -38,8 +39,7 @@
     "stream-browserify": "^3.0.0",
     "styled-components": "^6.0.5",
     "timers-browserify": "^2.0.12",
-    "util": "^0.12.5",
-    "@restart/hooks": "0.4.11"
+    "util": "^0.12.5"
   },
   "description": ""
 }
