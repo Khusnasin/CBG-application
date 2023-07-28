@@ -31,7 +31,14 @@ router.post("/login", async(req, res) =>{
 router.get("/getallusers", async(req,res) => {
     try{
         const users = await User.find({})
-        res.send(users)
+        // Handling null values in the response data
+    const usersWithNullFields = users.map(user => ({
+        ...user.toObject(),
+        name: user.name || null,
+        email: user.email || null,
+        password: user.password || null,
+      }));
+        res.send(usersWithNullFields)
     } 
     catch(error) {
         return res.status(400).json({error});
