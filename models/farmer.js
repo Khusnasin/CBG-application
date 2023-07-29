@@ -28,17 +28,17 @@ const userSchema = mongoose.Schema({
         required : true
     },
     dungProduced_inKg : {
-        type : String,
+        type : Number,
         required : true
     },
     
     amountOfMilk_inLitre : {
-        type : String,
+        type : Number,
         required: true
     },
     
     imageUrls : [],
-
+    
     description : {
         type: String , 
         required : false
@@ -54,7 +54,7 @@ const userSchema = mongoose.Schema({
     password : {
         type : String,
         required : false
-    }
+    } 
 
 } , {
     timestamps : true,

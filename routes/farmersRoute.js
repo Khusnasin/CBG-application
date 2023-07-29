@@ -121,7 +121,7 @@ router.get('/getfarmerbyid', async (req, res) => {
         if(farmer){
             res.send(farmer);
         } else{
-            res.status(404).json({ message: 'Farmer not found' });
+            res.status(404).json({ message: error });
         }
        
         //return res.json({rooms});
@@ -129,7 +129,7 @@ router.get('/getfarmerbyid', async (req, res) => {
     catch (error) {
         console.log('Error fetching farmer:', error);
         return res.status(400).json({ message: error });
-    }
+    } 
 });
 
 router.put('/updatefarmer/:farmerid', async (req, res) => {
