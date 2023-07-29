@@ -8,7 +8,7 @@ const authenticateUser = require('../middleware/authmiddleware');
 
 // Controller function for admin registration
 const registerAdmin = async (req, res) => {
-  const { username, email, password, adminCode } = req.body;
+  const { username, email, role, password, adminCode } = req.body;
 
   // Validate the admin code 
   if (adminCode !== config.secretAdminCode) {
@@ -29,6 +29,7 @@ const registerAdmin = async (req, res) => {
     const newAdmin = new AdminModel({
       username,
       email,
+      role,
       password: hashedPassword,
       adminCode,
     });
@@ -43,7 +44,7 @@ const registerAdmin = async (req, res) => {
   }
 };
 
-router.post('/registeruseradmin', registerAdmin);
+
 
 
 
@@ -92,6 +93,16 @@ const loginAdmin = async (req, res) => {
     res.status(200).json({ message: 'This is an admin-only route.' });
   } else {
     res.status(403).json({ message: 'You are not authorized to access this route.' });
+  }
+});
+// Get all admin details
+router.get('/getalladmins', async (req, res) => {
+  try {
+    const admins = await AdminModel.find();
+    res.json(admins);
+  } catch (error) {
+    console.error('Error fetching admin data:', error);
+    res.status(500).json({ error: 'Failed to fetch admin data. Please try again later.' });
   }
 });
   
