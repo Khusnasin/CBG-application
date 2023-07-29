@@ -28,12 +28,12 @@ const userSchema = mongoose.Schema({
         required : true
     },
     dungProduced_inKg : {
-        type : String,
+        type : Number,
         required : true
     },
     
     amountOfMilk_inLitre : {
-        type : String,
+        type : Number,
         required: true
     },
     

@@ -13,7 +13,7 @@ app.use(express.json());
 app.use('/api/farmers' , farmersRoute);
 app.use('/api/users' , usersRoute);
 app.use('/api/admin' , adminRoute);
-app.use('/api/farmers/statistics', statisticsRoute);
+app.use(statisticsRoute);
 
 
 const port = process.env.PORT || 5000;
