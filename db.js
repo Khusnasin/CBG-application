@@ -2,24 +2,33 @@ const mongoose = require("mongoose");
 
 var mongoURL = 'mongodb+srv://bluecorecbgplant:wHlcuIsJUk58IUEF%402019@cluster0.p1z9ijo.mongodb.net/Bluecore'
 
-mongoose.connect(mongoURL , {
-    useUnifiedTopology: true ,
+mongoose.connect(mongoURL, {
+    useUnifiedTopology: true,
+
+    useNewUrlParser: true,
+    //useCreateIndex: true
  
-     useNewUrlParser : true,
-     //useCreateIndex: true
+});
 
-    })
+var connection = mongoose.connection;
 
-var connection = mongoose.connection
+let gfs;
 
-connection.on('error' , ()=>{
+connection.once("open", () => {
+    gfs = new mongoose.mongo.GridFSBucket(connection.db, {
+        bucketName: "uploads",
+    });
+});
+
+
+connection.on('error', () => {
     console.log('MongoDB Connection failed')
 })
 
-connection.on('connected' , ()=>{
+connection.on('connected', () => {
     console.log('MongoDB connection successful!')
 })
 
 
 
-module.exports = mongoose;
+module.exports = {mongoose, gfs};

@@ -38,7 +38,7 @@ const userSchema = mongoose.Schema({
     },
     
     imageUrls : [],
-
+    
     description : {
         type: String , 
         required : false
@@ -54,7 +54,7 @@ const userSchema = mongoose.Schema({
     password : {
         type : String,
         required : false
-    }
+    } 
 
 } , {
     timestamps : true,
