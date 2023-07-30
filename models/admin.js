@@ -13,6 +13,9 @@ const adminSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  role: { 
+    type: String, 
+    required: true }, // You can have different roles like "admin" and "superadmin"
   password: {
     type: String,
     required: true,
