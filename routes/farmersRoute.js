@@ -6,6 +6,8 @@ router.post("/registerfarmer", async (req, res) => {
     const newfarmer = new Farmer({
         Name: req.body.Name,
         location: req.body.location,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
         phoneNumber: req.body.phoneNumber,
         areaOfNapier: req.body.areaOfNapier,
         useOfNapier: req.body.useOfNapier,
@@ -53,51 +55,51 @@ router.post("/loginfarmer", async (req, res) => {
 
 router.post("/addfarmers", async (req, res) => {
     try {
-      const {
-        Name,
-        location,
-        phoneNumber,
-        areaOfNapier,
-        useOfNapier,
-        numberOfCows,
-        dungProduced_inKg,
-        amountOfMilk_inLitre,
-        imageurl1,
-        imageurl2,
-        imageurl3,
-        description,
-        challenges,
-        interestInTraining,
-        password,
-      } = req.body;
-  
-      const newfarmer = new Farmer({
-        Name,
-        location,
-        phoneNumber,
-        areaOfNapier,
-        useOfNapier,
-        numberOfCows,
-        dungProduced_inKg,
-        amountOfMilk_inLitre,
-        imageurl1,
-        imageurl2,
-        imageurl3,
-        description,
-        challenges,
-        interestInTraining,
-        password,
-      });
-  
-      await newfarmer.save();
-  
-      res.status(200).json({message:"New Farmer Added Successfully!"});
+        const {
+            Name,
+            location,
+            phoneNumber,
+            areaOfNapier,
+            useOfNapier,
+            numberOfCows,
+            dungProduced_inKg,
+            amountOfMilk_inLitre,
+            imageurl1,
+            imageurl2,
+            imageurl3,
+            description,
+            challenges,
+            interestInTraining,
+            password,
+        } = req.body;
+
+        const newfarmer = new Farmer({
+            Name,
+            location,
+            phoneNumber,
+            areaOfNapier,
+            useOfNapier,
+            numberOfCows,
+            dungProduced_inKg,
+            amountOfMilk_inLitre,
+            imageurl1,
+            imageurl2,
+            imageurl3,
+            description,
+            challenges,
+            interestInTraining,
+            password,
+        });
+
+        await newfarmer.save();
+
+        res.status(200).json({ message: "New Farmer Added Successfully!" });
     } catch (error) {
         console.error('Error adding farmer:', error);
         res.status(500).json({ error: 'Failed to add farmer. Please try again later.' });
 
-   
-  }
+
+    }
 });
 
 router.get('/getallfarmers', async (req, res) => {
@@ -118,35 +120,35 @@ router.get('/getfarmerbyid', async (req, res) => {
     try {
         const farmer = await Farmer.findOne({ _id: farmerid });
 
-        if(farmer){
+        if (farmer) {
             res.send(farmer);
-        } else{
+        } else {
             res.status(404).json({ message: error });
         }
-       
+
         //return res.json({rooms});
     }
     catch (error) {
         console.log('Error fetching farmer:', error);
         return res.status(400).json({ message: error });
-    } 
+    }
 });
 
 router.put('/updatefarmer/:farmerid', async (req, res) => {
     const farmerId = req.params.farmerid;
-    const updatedFarmerData = req.body; 
-  
+    const updatedFarmerData = req.body;
+
     try {
-     
-      const updatedFarmer = await Farmer.findByIdAndUpdate(farmerId, updatedFarmerData, { new: true });
-  
-      
-      res.json(updatedFarmer);
+
+        const updatedFarmer = await Farmer.findByIdAndUpdate(farmerId, updatedFarmerData, { new: true });
+
+
+        res.json(updatedFarmer);
     } catch (error) {
-      console.log('Error updating farmer:', error);
-      return res.status(400).json({ message: 'Failed to update farmer' });
+        console.log('Error updating farmer:', error);
+        return res.status(400).json({ message: 'Failed to update farmer' });
     }
-  });
+});
 
 
 
