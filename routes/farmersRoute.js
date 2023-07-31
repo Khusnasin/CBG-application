@@ -130,6 +130,15 @@ router.put('/updatefarmer/:farmerid', async (req, res) => {
         return res.status(400).json({ message: 'Failed to update farmer' });
     }
 });
+// GET '/api/farmers'
+router.get('/', async (req, res) => {
+    try {
+      const farmers = await Farmer.find();
+      res.json(farmers);
+    } catch (error) {
+      res.status(500).json({ error: 'Error fetching farmers data' });
+    }
+  });
 
 
 
