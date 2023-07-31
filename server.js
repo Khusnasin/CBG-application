@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use('/api/farmers' , farmersRoute);
 app.use('/api/users' , usersRoute);
-app.use('/api/admin' , adminRoute);
+app.use('/api/admins' , adminRoute);
 app.use(statisticsRoute);
 
 
