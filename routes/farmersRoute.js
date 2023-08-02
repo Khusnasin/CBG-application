@@ -91,7 +91,7 @@ router.get('/getallfarmers', async (req, res) => {
     }
     catch (error) {
         return res.status(400).json({ message: error });
-    }
+    } 
 
 });
 
@@ -102,7 +102,7 @@ router.get('/getfarmerbyid', async (req, res) => {
         const farmer = await Farmer.findOne({ _id: farmerid });
 
         if (farmer) {
-            res.send(farmer);
+            res.send(farmer);A
         } else {
             res.status(404).json({ message: error });
         }
