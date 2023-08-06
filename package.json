@@ -6,8 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "start-server": "nodemon server.js --ignore'./client/'",
-    "start-client": "npm start --prefix client ",
-    "dev": "concurrently \"npm run start-server\" \"npm run start-client\""
+    
+    "client": "npm start --prefix ./client",
+    "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -46,6 +47,5 @@
     "styled-components": "^6.0.5",
     "timers-browserify": "^2.0.12",
     "util": "^0.12.5"
-  },
-  "description": ""
+  }
 }
